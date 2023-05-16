@@ -10,7 +10,14 @@ export const NavApp = () => {
 	const btnRef = React.useRef()
 	return (
 		<>
-			<SimpleGrid columns={2} gap="10px" p="10px" >
+			<SimpleGrid columns={2} gap="10px" p="10px" position="fixed"
+				top={0}
+				left={0}
+				right={0}
+				height="64px"
+				backgroundColor="grey"
+				color="white"
+				zIndex="999" >
 				<Heading>Plant Store</Heading>
 				<HStack as="nav" justifyContent="flex-end" gap={5}>
 					<Link to="/">
@@ -39,7 +46,7 @@ export const NavApp = () => {
 					<DrawerHeader>Carrito de compras</DrawerHeader>
 
 					<DrawerBody>
-						
+
 					</DrawerBody>
 
 					<DrawerFooter>

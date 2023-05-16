@@ -1,11 +1,12 @@
-import { Flex, Image, Wrap } from '@chakra-ui/react'
+import { Flex, Heading, Image, Wrap } from '@chakra-ui/react'
 import React, { useContext } from 'react'
-// import { ProductsContext } from '../../contexts/productsContext'
+import { ProductsContext } from '../../contexts/productsContext'
+import ProductCard from '../../components/ProductCard'
 
 export const HomePage = () => {
 
 
-    // const { products } = useContext(ProductsContext)
+    const { allProducts } = useContext(ProductsContext)
     // const latestProducts = getAllProducts()
 
     return (
@@ -14,9 +15,9 @@ export const HomePage = () => {
                 objectFit='cover'
                 src='../public/home.jpeg'
                 alt='Dan Abramov' />
-            <h1>productos destacados</h1>
-            <Wrap>
-                {/* {products.map(product => <ProductCard key={product.id} product={product}/>)} */}
+            <Heading>productos destacados</Heading>
+            <Wrap p="50px">
+                {allProducts.map(product => product.featuredItem && <ProductCard size="15%" key={product.id} product={product}/>)}
             </Wrap>
         </Flex>
     )

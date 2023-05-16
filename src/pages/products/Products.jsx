@@ -21,7 +21,7 @@ export const Products = () => {
 
     return (
         <Flex wrap="wrap" p="50px" gap="20px">
-            {data.map(product => <ProductCard key={product.id} product={product}/>)}
+            {data.map(product => <ProductCard key={product.id} size="30%" product={product}/>)}
         </Flex>
     )
 }

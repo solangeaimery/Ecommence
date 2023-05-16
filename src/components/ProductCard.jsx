@@ -1,9 +1,9 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product, size}) => {
     return (
-        <Card maxW='20vw' gap="20px" minW="200px">
+        <Card maxW='20vw' gap="20px" minW={size} p="10px">
             <CardBody>
                 <Image
                     src={product.image}

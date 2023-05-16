@@ -1,26 +1,39 @@
 import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate} from 'react-router-dom'
+import { auth } from '../../firebase/config'
+import { getAuth ,signInWithEmailAndPassword } from 'firebase/auth'
 
 const Login = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty },
+        formState: { errors, isDirty ,isSubmitting },
     } = useForm()
 
-    // const { errors } = formState
+    const navigate = useNavigate()
 
-    // console.log(errors)
-    console.log(isDirty)
-
-    const login = (data) => {
-        console.log(data)
-        alert(JSON.stringify(data))
+    const loginAccount = async (data) => {
+        try {
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                data.email,
+                data.password
+            )
+            const user = userCredential.user//aqui iria el seter del context
+            navigate("/")
+        } catch (error) {
+            const errorCode = error.code
+            console.log(errorCode)
+            const errorMessage = error.message
+            console.log(errorMessage)
+        }
     }
+
+
     return (
-        <form onSubmit={handleSubmit(login)}>
+        <form onSubmit={handleSubmit(loginAccount)}>
             
             <Flex justifyContent="center">
                 <SimpleGrid gap={15} p="50px" minW="60%" textAlign="center">
@@ -55,7 +68,7 @@ const Login = () => {
                         <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
                     </FormControl>
 
-                    <Button type="submit" isDisabled={!isDirty}>
+                    <Button type="submit" isLoading={isSubmitting}  isDisabled={!isDirty}>
                         Login
                     </Button>
                     <Flex gap="10px" justifyContent="center"><Text fontSize='m'> No tienes cuenta?</Text>
