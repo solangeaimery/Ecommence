@@ -1,7 +1,10 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../contexts/CartContext'
 
-const ProductCard = ({product, size}) => {
+const ProductCard = ({ product, size }) => {
+    const { addToCart } = useContext(CartContext)
+
     return (
         <Card maxW='20vw' gap="20px" minW={size} p="10px">
             <CardBody>
@@ -23,7 +26,7 @@ const ProductCard = ({product, size}) => {
                     <Button variant='solid' colorScheme='blue'>
                         Buy now
                     </Button>
-                    <Button variant='ghost' colorScheme='blue'>
+                    <Button variant='ghost' colorScheme='blue' onClick={() => addToCart(product)}>
                         Add to cart
                     </Button>
                 </ButtonGroup>

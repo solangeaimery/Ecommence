@@ -1,15 +1,17 @@
 import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link , useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase/config'
-import { getAuth ,signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { UserContext } from '../../contexts/UserContext'
 
 const Login = () => {
+    const { handleUser, user } = useContext(UserContext)
     const {
         register,
         handleSubmit,
-        formState: { errors, isDirty ,isSubmitting },
+        formState: { errors, isDirty, isSubmitting },
     } = useForm()
 
     const navigate = useNavigate()
@@ -21,8 +23,11 @@ const Login = () => {
                 data.email,
                 data.password
             )
-            const user = userCredential.user//aqui iria el seter del context
+            const userData = userCredential.user
+            handleUser(userData)
             navigate("/")
+            console.log(user)
+        
         } catch (error) {
             const errorCode = error.code
             console.log(errorCode)
@@ -34,7 +39,7 @@ const Login = () => {
 
     return (
         <form onSubmit={handleSubmit(loginAccount)}>
-            
+
             <Flex justifyContent="center">
                 <SimpleGrid gap={15} p="50px" minW="60%" textAlign="center">
                     <Heading>Iniciar sesion</Heading>
@@ -68,11 +73,11 @@ const Login = () => {
                         <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
                     </FormControl>
 
-                    <Button type="submit" isLoading={isSubmitting}  isDisabled={!isDirty}>
+                    <Button type="submit" isLoading={isSubmitting} isDisabled={!isDirty}>
                         Login
                     </Button>
                     <Flex gap="10px" justifyContent="center"><Text fontSize='m'> No tienes cuenta?</Text>
-                    <Link to="/register">Crear cuenta</Link></Flex>
+                        <Link to="/register">Crear cuenta</Link></Flex>
                 </SimpleGrid>
             </Flex>
         </form>

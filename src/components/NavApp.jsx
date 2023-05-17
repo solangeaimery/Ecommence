@@ -1,13 +1,17 @@
-import { HStack, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent } from '@chakra-ui/react'
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { HStack, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa"
+import React, { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import { CartContext } from '../contexts/CartContext';
+import CartCard from './CartCard';
 
 
 export const NavApp = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
+	const { user } = useContext(UserContext)
 	const btnRef = React.useRef()
+	const {cart, emptyCart} = useContext(CartContext)
 	return (
 		<>
 			<SimpleGrid columns={2} gap="10px" p="10px" position="fixed"
@@ -26,11 +30,20 @@ export const NavApp = () => {
 					<Link to="/productos">
 						Productos
 					</Link>
-					<Link to="/iniciar-sesion">
-						Iniciar Sesion
-					</Link>
+					{!user ? <Link to="/iniciar-sesion"> Iniciar Sesion </Link> :
+						<Menu>
+							<MenuButton as={Button}>
+								<FaUserCircle />
+							</MenuButton>
+							<MenuList>
+								<MenuItem>Download</MenuItem>
+								<MenuItem>Create a Copy</MenuItem>
+								<MenuItem>Mark as Draft</MenuItem>
+							</MenuList>
+						</Menu>
+					}
 					<IconButton to="/crear-cuenta" onClick={onOpen}>
-						<FontAwesomeIcon icon={faCartShopping} />
+						<FaShoppingCart />
 					</IconButton>
 				</HStack>
 			</SimpleGrid>
@@ -46,14 +59,14 @@ export const NavApp = () => {
 					<DrawerHeader>Carrito de compras</DrawerHeader>
 
 					<DrawerBody>
-
+						{cart.map( item => <CartCard item={item} key={item.id}/>)}
 					</DrawerBody>
 
 					<DrawerFooter>
-						<Button variant='outline' mr={3} onClick={onClose}>
-							Cancel
+						<Button variant='outline' mr={3} onClick={emptyCart}>
+							vaciar carrito
 						</Button>
-						<Button colorScheme='blue'>Save</Button>
+						<Button colorScheme='blue'>finalizar compra</Button>
 					</DrawerFooter>
 				</DrawerContent>
 			</Drawer>
