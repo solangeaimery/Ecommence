@@ -1,6 +1,5 @@
-import {collection, getDocs} from 'firebase/firestore';
+import {collection, doc, getDocs, setDoc} from 'firebase/firestore';
 import { db } from '../firebase/config.js';
-import { useContext } from 'react';
 
 export const getAllProducts = async () => {
 
@@ -18,3 +17,9 @@ export const getAllProducts = async () => {
 	return products
 ;
 };
+
+export const createOrder = async (order) => {
+	console.log(order)
+    await
+	setDoc(doc(db, 'orders', self.crypto.randomUUID()), order)
+}

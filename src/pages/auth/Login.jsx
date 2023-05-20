@@ -25,7 +25,7 @@ const Login = () => {
             )
             const userData = userCredential.user
             handleUser(userData)
-            navigate("/")
+            navigate(-1)
             console.log(user)
         
         } catch (error) {

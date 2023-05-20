@@ -22,6 +22,8 @@ const CartCard = ({item}) => {
             <Stack>
                 <CardBody>
                     <Heading size='md'>{item.name}</Heading>
+                    {/* hay que darle mas estilos a esto */}
+                    <p>{item.quantity}</p>
                 </CardBody>
                 <CardFooter>
                     <Button variant='solid' colorScheme='red' fontSize="sm" onClick={() => deleteItem(item.id)}>

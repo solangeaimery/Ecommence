@@ -9,7 +9,7 @@ import CartCard from './CartCard';
 
 export const NavApp = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const { user } = useContext(UserContext)
+	const { user, handleLogOut } = useContext(UserContext)
 	const btnRef = React.useRef()
 	const {cart, emptyCart} = useContext(CartContext)
 	return (
@@ -36,9 +36,7 @@ export const NavApp = () => {
 								<FaUserCircle />
 							</MenuButton>
 							<MenuList>
-								<MenuItem>Download</MenuItem>
-								<MenuItem>Create a Copy</MenuItem>
-								<MenuItem>Mark as Draft</MenuItem>
+								<MenuItem as="button" onClick={handleLogOut} color="black">cerrar sesion</MenuItem>
 							</MenuList>
 						</Menu>
 					}
@@ -66,7 +64,7 @@ export const NavApp = () => {
 						<Button variant='outline' mr={3} onClick={emptyCart}>
 							vaciar carrito
 						</Button>
-						<Button colorScheme='blue'>finalizar compra</Button>
+						<Button as={Link} to={!user ? "/iniciar-sesion" : "/finalizar-compra"} >finalizar compra</Button>
 					</DrawerFooter>
 				</DrawerContent>
 			</Drawer>

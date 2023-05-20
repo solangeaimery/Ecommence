@@ -22,7 +22,7 @@ export const Register = () => {
                 data.password
             )
             const user = userCredential.user//aqui iria el seter del context
-            navigate("/")
+            navigate(-1)
         } catch (error) {
             const errorCode = error.code
             console.log(errorCode)
