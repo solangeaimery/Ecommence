@@ -19,7 +19,7 @@ if (isLoading) {
   return ( <p> toy cargando </p> ) 
 }
   return ( 
-    <AppLayout>
+    <AppLayout className="App">
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/productos' element={<Products/>} />

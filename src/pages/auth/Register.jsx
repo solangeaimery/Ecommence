@@ -35,7 +35,7 @@ export const Register = () => {
     return (
         <form onSubmit={handleSubmit(createNewAccount)}>
 
-            <Flex justifyContent="center">
+            <Flex justifyContent="center" marginTop="100px">
                 <SimpleGrid gap={15} p="50px" minW="60%" textAlign="center">
                     <Heading>Registrarse</Heading>
                     <FormControl isInvalid={errors.email}>

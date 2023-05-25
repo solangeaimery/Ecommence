@@ -1,20 +1,34 @@
-import { Flex, Skeleton, SkeletonText } from '@chakra-ui/react'
-import React from 'react'
+import {
+    Box,
+    Card,
+    CardBody,
+    Stack,
+    Divider,
+    Skeleton,
+    SkeletonText,
+    Flex,
+} from '@chakra-ui/react'
 
-const SkeletonCard = (size) => {
+export const SkeletonCard = (size) => {
     return (
-        <Flex flexDirection="column" maxW='20vw' gap="20px" minW={size} p="10px">
-            <Skeleton height={30}/>
-            <SkeletonText mt='4' noOfLines={3} spacing='4' skeletonHeight='2'/>
+        <Card maxW='20vw' gap="25px" minW={size} p="10px" boxShadow='lg'>
+            <CardBody>
+                <Box maxW={{ base: '100%', md: '92.5%' }}>
+                    <Skeleton height="200px" />
+                </Box>
+                <Stack mt="6" spacing="3">
+                    <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+                </Stack>
+            </CardBody>
+            <Divider/>
             <Flex>
-                <Skeleton height={20}/> 
-                <Skeleton height={20}/>
+                <Box maxW={{ base: '20%',}}>
+                    <Skeleton height="50px" />
+                </Box>
+                <Box maxW={{ base: '20%', }}>
+                    <Skeleton height="50px"/>
+                </Box>
             </Flex>
-        </Flex>
+        </Card>
     )
 }
-
-//queda seguir el skeleton para las cards pero bueno nada, detalles de estilado. 
-
-
-export default SkeletonCard

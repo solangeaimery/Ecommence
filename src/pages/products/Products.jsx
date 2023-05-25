@@ -1,12 +1,14 @@
-import {  Flex, Grid } from '@chakra-ui/react'
+import { Flex, Grid, SimpleGrid } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../../components/ProductCard'
 import { getAllProducts } from '../../services/products'
 import { Filter } from './Filter'
+import { SkeletonCard } from '../../components/SkeletonCard'
 
 export const Products = () => {
     const [data, setData] = useState([])
     const [dataBase, setDataBase] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const handleData = (newData) => {
         setData(newData)
@@ -18,6 +20,7 @@ export const Products = () => {
                 const dataArray = await getAllProducts();
                 setData(dataArray);
                 setDataBase(dataArray)
+                setIsLoading(false)
             } catch (error) {
                 console.error('Error al obtener los datos:', error);
             }
@@ -27,9 +30,30 @@ export const Products = () => {
 
     return (
         <Grid>
-            <Filter data={data} handleData={handleData} dataBase={dataBase}/>
-            <Flex wrap="wrap" p="50px" gap="20px">
-                {data.map(product => <ProductCard key={product.id} size="30%" product={product} />)}
+            <Filter data={data} handleData={handleData} dataBase={dataBase} />
+            {isLoading && (
+                <SimpleGrid
+                    h="100%"
+                    w="100%"
+                    columns={{ base: '1', md: '3', xl: '4' }}
+                    justifyContent="center"
+                    bgColor="white"
+                    p="50px" gap="20px"
+                    backgroundImage="url('public/backgroundLeaves.jpeg')"
+                    >
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                    <SkeletonCard size="25%"/>
+                </SimpleGrid>
+            )}
+            <Flex wrap="wrap" p="50px" gap="20px" backgroundImage="url('public/backgroundLeaves.jpeg')">
+                {data.map(product => <ProductCard key={product.id} size="23%" product={product} />)}
             </Flex>
         </Grid>
     )

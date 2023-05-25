@@ -1,16 +1,17 @@
-import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text } from '@chakra-ui/react'
+import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text, Divider } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa"
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { CartContext } from '../contexts/CartContext';
 import CartCard from './CartCard';
+import "../App.css"
 
 
 
 export const NavApp = () => {
 
-	const [logoSize, setLogoSize] = useState("80px");
+	const [logoSize, setLogoSize] = useState("100px");
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const { user, handleLogOut } = useContext(UserContext)
 	const btnRef = React.useRef()
@@ -19,7 +20,7 @@ export const NavApp = () => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const shouldLogoGrow = window.scrollY < window.innerHeight;
-			const newLogoSize = shouldLogoGrow ? "80px" : "40px";
+			const newLogoSize = shouldLogoGrow ? "100px" : "40px";
 			if (logoSize !== newLogoSize) {
 				setLogoSize(newLogoSize);
 			}
@@ -47,6 +48,8 @@ export const NavApp = () => {
 				zIndex="999"
 				background="#6A4873"
 				transition="all 0.3s ease"
+				boxShadow='xl'
+				className='navbar'
 			>
 				<SimpleGrid columns={3}>
 					<Flex>
@@ -67,8 +70,10 @@ export const NavApp = () => {
 							<Link as={NavLink} to="/iniciar-sesion" fontSize="16px"
 								color="white"
 								fontWeight="bold"
-								_hover={{ color: "#C0E6C8" }}> Iniciar Sesion </Link>
-							<Link as={NavLink} to="/crear-cuenta"
+								_hover={{ color: "#C0E6C8" }}
+							> Iniciar Sesion </Link>
+							<Text>|</Text>
+							<Link as={NavLink} to="/register"
 								fontSize="16px"
 								color="white"
 								fontWeight="bold"
@@ -128,7 +133,7 @@ export const NavApp = () => {
 
 					<DrawerFooter>
 						<Flex flexDir="column" justifyContent="flex-end" gap={5}>
-						{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='md'>Total  ${totalCart()}</Heading>}
+							{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='md'>Total  ${totalCart()}</Heading>}
 							<Box>
 								<Button variant='outline' color="#6A4873" borderColor="#8B728F" borderWidth="1px" mr={3} onClick={emptyCart}>
 									vaciar carrito
