@@ -8,6 +8,7 @@ import { Register } from './pages/auth/register'
 import { Orders } from './pages/Orders'
 import { useContext } from 'react'
 import { UserContext } from './contexts/UserContext'
+import { ProductDetail } from './pages/products/ProductDetail'
 
 
 function App() {
@@ -22,6 +23,7 @@ if (isLoading) {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/productos' element={<Products/>} />
+      <Route path="/productos/:productId" element={<ProductDetail/>}/>
       <Route path='/iniciar-sesion' element={<Login/>} />
       <Route path='/register' element={<Register/>}></Route>
       <Route path='/finalizar-compra' element={<Orders/>}></Route>

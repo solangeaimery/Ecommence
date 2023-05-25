@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 
 export const AppLayout = ({ children }) => {
 	return (
-		<Flex flexDirection="column" minH="100vh">
+		<Flex flexDirection="column" minH="100vh" marginTop={100}>
 			<NavApp />
 			<Stack flex="1">{children}</Stack>
 			<Footer />
