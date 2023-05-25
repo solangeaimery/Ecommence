@@ -1,4 +1,4 @@
-import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, background } from '@chakra-ui/react'
+import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa"
 import React, { useContext, useEffect, useState } from 'react';
@@ -14,7 +14,7 @@ export const NavApp = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const { user, handleLogOut } = useContext(UserContext)
 	const btnRef = React.useRef()
-	const { cart, emptyCart } = useContext(CartContext)
+	const { cart, emptyCart, totalCart } = useContext(CartContext)
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -30,7 +30,7 @@ export const NavApp = () => {
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
-	}, [logoSize]);
+	}, [logoSize])
 
 
 	return (
@@ -115,21 +115,34 @@ export const NavApp = () => {
 				placement='right'
 				onClose={onClose}
 				finalFocusRef={btnRef}
+				size="md"
 			>
 				<DrawerOverlay />
 				<DrawerContent>
 					<DrawerCloseButton />
-					<DrawerHeader>Carrito de compras</DrawerHeader>
+					<DrawerHeader backgroundColor="#C0E6C8" color="#6A4873">Carrito de compras</DrawerHeader>
 
 					<DrawerBody>
 						{cart.map(item => <CartCard item={item} key={item.id} />)}
 					</DrawerBody>
 
 					<DrawerFooter>
-						<Button variant='outline' mr={3} onClick={emptyCart}>
-							vaciar carrito
-						</Button>
-						<Button as={Link} to={!user ? "/iniciar-sesion" : "/finalizar-compra"} >finalizar compra</Button>
+						<Flex flexDir="column" justifyContent="flex-end" gap={5}>
+						{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='md'>Total  ${totalCart()}</Heading>}
+							<Box>
+								<Button variant='outline' color="#6A4873" borderColor="#8B728F" borderWidth="1px" mr={3} onClick={emptyCart}>
+									vaciar carrito
+								</Button>
+								<Button as={NavLink} to={!user ? "/iniciar-sesion" : "/finalizar-compra"}
+									color="white"
+									backgroundColor="#8B728F"
+									_hover={{
+										color: "WHITE",
+										backgroundColor: "#6A4873"
+									}} >Finalizar compra
+								</Button>
+							</Box>
+						</Flex>
 					</DrawerFooter>
 				</DrawerContent>
 			</Drawer>
