@@ -1,12 +1,15 @@
 import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, SimpleGrid, useConst } from '@chakra-ui/react'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { UserContext, useUserContext } from '../contexts/UserContext'
+import { UserContext } from '../contexts/UserContext'
 import { createOrder } from '../services/products'
+import { useNavigate } from 'react-router-dom'
 
 export const Orders = () => {
-    
+
     const { user } = useContext(UserContext)
+
+    const navigate = useNavigate()
 
     const {
         register,
@@ -14,26 +17,22 @@ export const Orders = () => {
         formState: { errors, isDirty, isSubmitting },
     } = useForm()
 
-    // const handleOrder = (e) => {
-    //     e.preventDefault()
-    //     console.log("finalizamos la compra gg")
-    // }
 
     const submitOrder = async (data) => {
         try {
-            await 
-            console.log(data)
-            createOrder({
-                consumer: data.email,
-                adress: data.address,
-                state: data.state, 
-                name: data.name ,
-                phone: data.phone, 
-                cart: [],
-                total: 0, 
-            })
+            await
+                createOrder({
+                    consumer: data.email,
+                    adress: data.address,
+                    state: data.state,
+                    name: data.name,
+                    phone: data.phone,
+                    cart: [],
+                    total: 0,
+                }),
+                navigate(-1)
         } catch (error) {
-            // bla bla
+            alert("uop hubo un error")
         }
     }
 
@@ -82,7 +81,7 @@ export const Orders = () => {
                         <FormErrorMessage>{errors.phone?.message}</FormErrorMessage>
                     </FormControl>
                     <Button type="submit" isLoading={isSubmitting} isDisabled={!isDirty}>
-                        Login
+                        Finalizar compra
                     </Button>
                 </SimpleGrid>
             </Flex>

@@ -26,7 +26,7 @@ const CartCard = ({ item }) => {
                     <Heading size='sm'>{item.name}</Heading>
                     {/* hay que darle mas estilos a esto */}
                     <Text>cantidad : x{item.quantity}</Text>
-                    <Text fontWeight="bold">Total  ${item.price}</Text>
+                    <Text fontWeight="bold">Total ${item.price}</Text>
                 </CardBody>
                 <CardFooter justifyContent="flex-end" p="10px">
                     <Button variant='solid' colorScheme='red' w="fit-content" 

@@ -1,4 +1,4 @@
-import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text, Divider } from '@chakra-ui/react'
+import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa"
 import React, { useContext, useEffect, useState } from 'react';
@@ -6,8 +6,6 @@ import { UserContext } from '../contexts/UserContext';
 import { CartContext } from '../contexts/CartContext';
 import CartCard from './CartCard';
 import "../App.css"
-
-
 
 export const NavApp = () => {
 
@@ -19,15 +17,13 @@ export const NavApp = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const shouldLogoGrow = window.scrollY < window.innerHeight;
-			const newLogoSize = shouldLogoGrow ? "100px" : "40px";
+			const shouldLogoGrow = window.scrollY <= 20;
+			const newLogoSize = shouldLogoGrow ? "100px" : "50px";
 			if (logoSize !== newLogoSize) {
 				setLogoSize(newLogoSize);
 			}
 		};
-
 		window.addEventListener('scroll', handleScroll);
-
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
