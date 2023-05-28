@@ -25,7 +25,7 @@ const ProductCard = ({ product, size }) => {
             </CardBody>
             <Divider color="#16302B" />
             <Flex justifyContent="space-around">
-                <Button as={Link} to={`/products/${product.id}`} size="sm" variant='ghost' colorScheme="purple" >
+                <Button as={Link} to={`/productos/${product.id}`} size="sm" variant='ghost' colorScheme="purple" >
                     Ver detalles
                 </Button>
                 <Button variant='ghost' size="sm" colorScheme="teal" onClick={() => {

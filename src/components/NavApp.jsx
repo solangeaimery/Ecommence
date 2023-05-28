@@ -1,4 +1,4 @@
-import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text } from '@chakra-ui/react'
+import { HStack, Input, Heading, SimpleGrid, IconButton, Drawer, DrawerOverlay, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button, useDisclosure, DrawerContent, Menu, MenuButton, MenuList, MenuItem, Image, Box, Link, Flex, Text, Badge } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom';
 import { FaShoppingCart, FaUserCircle } from "react-icons/fa"
 import React, { useContext, useEffect, useState } from 'react';
@@ -14,6 +14,7 @@ export const NavApp = () => {
 	const { user, handleLogOut } = useContext(UserContext)
 	const btnRef = React.useRef()
 	const { cart, emptyCart, totalCart } = useContext(CartContext)
+
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -87,12 +88,35 @@ export const NavApp = () => {
 								</MenuList>
 							</Menu>
 						}
-						<IconButton onClick={onOpen} color="#C0E6C8" background="transparent" borderRadius="30px" _hover={{
-							color: "#6A4873",
-							background: "#C0E6C8"
-						}}>
-							<FaShoppingCart fontSize="25px" />
-						</IconButton>
+						<Box position="relative">
+							<IconButton
+								onClick={onOpen}
+								color="#C0E6C8"
+								background="transparent"
+								borderRadius="30px"
+								_hover={{
+									color: "#6A4873",
+									background: "#C0E6C8"
+								}}
+							>
+								<FaShoppingCart fontSize="25px" />
+							</IconButton>
+							{cart.length > 0 && (
+								<Badge
+									position="absolute"
+									top={-2}
+									right={-2}
+									fontSize="xs"
+									color="white"
+									bg="#16302B"
+									borderRadius="full"
+									px={2}
+									py={1}
+								>
+									{cart.length}
+								</Badge>
+							)}
+						</Box>
 					</HStack>
 				</SimpleGrid>
 				<HStack justifyContent="center">

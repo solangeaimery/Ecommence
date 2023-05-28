@@ -1,4 +1,4 @@
-import {collection, doc, getDocs, setDoc} from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/config.js';
 
 export const getAllProducts = async () => {
@@ -15,11 +15,20 @@ export const getAllProducts = async () => {
 	});
 
 	return products
-;
+		;
 };
 
 export const createOrder = async (order) => {
 	console.log(order)
-    await
-	setDoc(doc(db, 'orders', self.crypto.randomUUID()), order)
+	await
+		setDoc(doc(db, 'orders', self.crypto.randomUUID()), order)
+}
+
+export const getOneProduct = async (id) => {
+	const ref = doc(db, 'products', id)
+	const productSnap = await getDoc(ref)
+	if(productSnap.exists()) {
+		const product = productSnap.data()
+		return product
+	}
 }
