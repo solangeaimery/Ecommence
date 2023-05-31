@@ -19,7 +19,7 @@ export const NavApp = () => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const shouldLogoGrow = window.scrollY <= 20;
-			const newLogoSize = shouldLogoGrow ? "100px" : "50px";
+			const newLogoSize = shouldLogoGrow ? "150px" : "100px";
 			if (logoSize !== newLogoSize) {
 				setLogoSize(newLogoSize);
 			}
@@ -33,7 +33,7 @@ export const NavApp = () => {
 
 	return (
 		<>
-			<Flex gap="10px" p="10px"
+			<Flex gap="10px"
 				flexDirection="column"
 				position="fixed"
 				top={0}
@@ -47,16 +47,17 @@ export const NavApp = () => {
 				transition="all 0.3s ease"
 				boxShadow='xl'
 				className='navbar'
+				paddingRight="15px"
 			>
 				<SimpleGrid columns={3}>
 					<Flex>
-						<Heading>HI</Heading>
+						<Image src='public/izquerdas.png' alt='flores' boxSize="200px" marginTop="-40px" marginLeft="-5px" marginBottom="-50px"></Image>
 					</Flex>
-					<Flex justifyContent="center">
+					<Flex justifyContent="center" alignItems="center">
 						<Image
-							src='https://d3ugyf2ht6aenh.cloudfront.net/stores/001/476/017/themes/common/logo-412807228-1610050861-cb6f70cf316041f4e70021764a3246a51610050862-480-0.png?0'
+							src='public/LogoFake.png'
 							alt='logo'
-							boxSize='80px'
+							boxSize="full"
 							objectFit='cover'
 							width={logoSize}
 							height={logoSize}
@@ -151,24 +152,29 @@ export const NavApp = () => {
 						{cart.map(item => <CartCard item={item} key={item.id} />)}
 					</DrawerBody>
 
-					<DrawerFooter>
 						<Flex flexDir="column" justifyContent="flex-end" gap={5}>
-							{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='md'>Total  ${totalCart()}</Heading>}
-							<Box>
-								<Button variant='outline' color="#6A4873" borderColor="#8B728F" borderWidth="1px" mr={3} onClick={emptyCart}>
-									vaciar carrito
-								</Button>
-								<Button as={NavLink} to={!user ? "/iniciar-sesion" : "/finalizar-compra"}
-									color="white"
-									backgroundColor="#8B728F"
-									_hover={{
-										color: "WHITE",
-										backgroundColor: "#6A4873"
-									}} >Finalizar compra
-								</Button>
-							</Box>
+							{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='md' marginBottom="-40px" marginRight="20px">Total  ${totalCart()}</Heading>}
+							<Flex justifyContent="space-between" alignItems="flex-end">
+								<Box>
+									<Image src='public/maceta.png' alt='maceta' boxSize="100px"></Image>
+								</Box>
+								<Box margin="20px">
+									<Button variant='outline' color="#6A4873" borderColor="#8B728F" borderWidth="1px" mr={3} onClick={emptyCart}>
+										vaciar carrito
+									</Button>
+									<Button as={NavLink} to={!user ? "/iniciar-sesion" : "/finalizar-compra"}
+										color="white"
+										backgroundColor="#8B728F"
+										_hover={{
+											color: "WHITE",
+											backgroundColor: "#6A4873"
+										}}
+										isDisabled={cart.length === 0}
+									>Finalizar compra
+									</Button>
+								</Box>
+							</Flex>
 						</Flex>
-					</DrawerFooter>
 				</DrawerContent>
 			</Drawer>
 		</>

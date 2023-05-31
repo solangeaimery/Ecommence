@@ -5,6 +5,7 @@ import { SkeletonCard } from '../../components/SkeletonCard'
 import { getAllProducts } from '../../services/products'
 import styles from "../home/HomePage.module.css"
 import { Link } from 'react-router-dom'
+import { FaSun } from 'react-icons/fa'
 
 export const HomePage = () => {
 
@@ -30,14 +31,13 @@ export const HomePage = () => {
             <Image
                 objectFit='cover'
                 src='../public/home.jpeg'
-                alt='Dan Abramov' />
-            <Heading p="10px" color="#6A4873"
-                textAlign="center"
-                marginTop="20px"
-                size="lg"
-                className={styles.heading}
-                backgroundImage="url('public/backgroundLeaves.jpeg')"
-            > . . . </Heading>
+                alt='plants' />
+                <Flex backgroundImage="url('public/backgroundLeaves.jpeg')"
+                p="20px" color="#6A4873"
+                justifyContent="center"
+                >
+                <FaSun fontSize="25px"/>
+                </Flex>
             {isLoading && (
                 <SimpleGrid
                     h="100%"
@@ -47,6 +47,8 @@ export const HomePage = () => {
                     backgroundImage="url('public/backgroundLeaves.jpeg')"
                     p="50px"
                 >
+                    <SkeletonCard size="15%" />
+                    <SkeletonCard size="15%" />
                     <SkeletonCard size="15%" />
                     <SkeletonCard size="15%" />
                     <SkeletonCard size="15%" />

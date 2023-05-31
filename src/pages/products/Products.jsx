@@ -29,7 +29,7 @@ export const Products = () => {
     }, []);
 
     return (
-        <Grid>
+        <Grid marginTop="25px">
             <Filter data={data} handleData={handleData} dataBase={dataBase} />
             {isLoading && (
                 <SimpleGrid

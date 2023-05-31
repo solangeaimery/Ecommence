@@ -1,21 +1,22 @@
-import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, SimpleGrid, useConst } from '@chakra-ui/react'
+import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, SimpleGrid, useDisclosure , Image, ModalFooter} from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { UserContext } from '../contexts/UserContext'
 import { createOrder } from '../services/products'
 import { useNavigate } from 'react-router-dom'
+import { CartContext } from '../contexts/CartContext'
 
 export const Orders = () => {
 
     const { user } = useContext(UserContext)
-
     const navigate = useNavigate()
-
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const {
         register,
         handleSubmit,
         formState: { errors, isDirty, isSubmitting },
     } = useForm()
+    const {emptyCart} = useContext(CartContext)
 
 
     const submitOrder = async (data) => {
@@ -30,7 +31,12 @@ export const Orders = () => {
                     cart: [],
                     total: 0,
                 }),
+                onOpen()
+                emptyCart()
+            setTimeout(() => {
                 navigate(-1)
+            }, 5000)
+
         } catch (error) {
             alert("uop hubo un error")
         }
@@ -38,54 +44,76 @@ export const Orders = () => {
 
 
     return (
-        <form onSubmit={handleSubmit(submitOrder)}>
-            <Flex justifyContent="center">
-                <SimpleGrid gap={15} p="50px" minW="60%" textAlign="center">
-                    <Heading>Finalizar compra</Heading>
-                    <FormControl isInvalid={errors.email}>
-                        <FormLabel>Direccion de Email</FormLabel>
-                        <Input
-                            {...register('email', {
-                                required: 'Este campo es requerido',
+        <Flex backgroundImage="url('public/backgroundLeaves.jpeg')"
+            padding="20px" minHeight="100vh" justifyContent="center" alignItems="center">
+            <form onSubmit={handleSubmit(submitOrder)}>
+                <Flex justifyContent="center" background="white" borderRadius="20px"
+                    boxShadow='2xl' minW="50vw">
+                    <SimpleGrid gap={10} p="50px" textAlign="center" minW="100%">
+                        <Heading margin="10PX">Finalizar compra</Heading>
+                        <FormControl isInvalid={errors.email}>
+                            <FormLabel>Direccion de Email</FormLabel>
+                            <Input
+                                {...register('email', {
+                                    required: 'Este campo es requerido',
+                                })}
+                                value={user.email}
+                                readOnly />
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Nombre</FormLabel>
+                            <Input {...register('name', {
+                                required: 'Please complete this field',
+                            })} />
+                            <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Direccion</FormLabel>
+                            <Input {...register('address', {
+                                required: 'Please complete this field',
+                            })} />
+                            <FormErrorMessage>{errors.adress?.message}</FormErrorMessage>
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>provincia</FormLabel>
+                            <Input {...register('state', {
+                                required: 'Please complete this field',
+                            })} />
+                            <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
+                        </FormControl>
+                        <FormControl>
+                            <FormLabel>Numero de contacto</FormLabel>
+                            <Input {...register("phone", {
+                                required: 'Please complete this field',
                             })}
-                            value={user.email}
-                            readOnly />
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Nombre</FormLabel>
-                        <Input {...register('name', {
-                            required: 'Please complete this field',
-                        })} />
-                        <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Direccion</FormLabel>
-                        <Input {...register('address', {
-                            required: 'Please complete this field',
-                        })} />
-                        <FormErrorMessage>{errors.adress?.message}</FormErrorMessage>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>provincia</FormLabel>
-                        <Input {...register('state', {
-                            required: 'Please complete this field',
-                        })} />
-                        <FormErrorMessage>{errors.state?.message}</FormErrorMessage>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>Numero de contacto</FormLabel>
-                        <Input {...register("phone", {
-                            required: 'Please complete this field',
-                        })}
-                            type='number' />
-                        <FormErrorMessage>{errors.phone?.message}</FormErrorMessage>
-                    </FormControl>
-                    <Button type="submit" isLoading={isSubmitting} isDisabled={!isDirty}>
-                        Finalizar compra
-                    </Button>
-                </SimpleGrid>
-            </Flex>
-        </form>
+                                type='number' />
+                            <FormErrorMessage>{errors.phone?.message}</FormErrorMessage>
+                        </FormControl>
+                        <Button type="submit" margin="20px" color="white"
+                            backgroundColor="#8B728F"
+                            _hover={{
+                                color: "WHITE",
+                                backgroundColor: "#6A4873"
+                            }} isLoading={isSubmitting} isDisabled={!isDirty}>
+                            Finalizar compra
+                        </Button>
+                    </SimpleGrid>
+                </Flex>
+            </form>
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent padding="10px">
+                    <ModalHeader minw="100%" >Compra finalizada con exito!</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                    Apreciamos sinceramente su compra y nos complace informarle que un asesor se pondrá en contacto con usted en breve para gestionar el pago y coordinar el envío de manera eficiente.
+                    </ModalBody>
+                    <ModalFooter display="flex" justifyContent="flex-end">
+                    <Image src='public/monstera izquierdas.png' alt='Dan Abramov' boxSize='100px' marginRight="-50px" marginBottom="-50px"/>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </Flex>
     )
 }
 
