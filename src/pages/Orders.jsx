@@ -109,7 +109,7 @@ export const Orders = () => {
                     Apreciamos sinceramente su compra y nos complace informarle que un asesor se pondrá en contacto con usted en breve para gestionar el pago y coordinar el envío de manera eficiente.
                     </ModalBody>
                     <ModalFooter display="flex" justifyContent="flex-end">
-                    <Image src='public/monstera izquierdas.png' alt='Dan Abramov' boxSize='100px' marginRight="-50px" marginBottom="-50px"/>
+                    <Image src='public/monsteraizquierdas.png' alt='Dan Abramov' boxSize='100px' marginRight="-50px" marginBottom="-50px"/>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

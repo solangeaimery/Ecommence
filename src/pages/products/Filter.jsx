@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Select } from '@chakra-ui/react'
+import { Button, Flex, Input, Select, Box } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 
@@ -25,10 +25,12 @@ export const Filter = ({ dataBase, handleData }) => {
 
     return (
         <Flex marginTop="70px"
-            gap={10}
+            gap={{ base: '5', md: '10' }}
             alignItems="center"
+            justifyContent="center"
             p="10px"
-            background="#D8E5DD">
+            background="#D8E5DD"
+        >
             <Input variant='flushed' value={textValue}
                 placeholder="Nombre"
                 type="text"

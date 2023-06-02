@@ -51,7 +51,7 @@ export const NavApp = () => {
 			>
 				<SimpleGrid columns={3}>
 					<Flex>
-						<Image src='public/izquerdas.png' alt='flores' boxSize="200px" marginTop="-40px" marginLeft="-5px" marginBottom="-50px"></Image>
+						<Image src='public/hojaizquierda.png' alt='flores' boxSize="110px"  marginBottom="-20px"></Image>
 					</Flex>
 					<Flex justifyContent="center" alignItems="center">
 						<Image

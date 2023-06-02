@@ -4,12 +4,12 @@ import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
 import { FaShoppingCart } from 'react-icons/fa'
 
-const ProductCard = ({ product, size }) => {
+const ProductCard = ({ product }) => {
     const { addToCart } = useContext(CartContext)
     const toast = useToast()
 
     return (
-        <Card maxW='20vw' gap="25px" minW={size} p="10px" boxShadow='lg'>
+        <Card maxW='20vw' gap="25px" minW="250px" p="10px" boxShadow='xl'>
             <CardBody>
                 <Image
                     src={product.image}

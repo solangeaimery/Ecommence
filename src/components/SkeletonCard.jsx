@@ -11,7 +11,7 @@ import {
 
 export const SkeletonCard = (size) => {
     return (
-        <Card maxW='20vw' gap="25px" minW={size} p="10px" boxShadow='lg'>
+        <Card maxW='20vw' gap="25px" minW={size} p="10px" boxShadow='xl'>
             <CardBody>
                 <Box maxW={{ base: '100%', md: '92.5%' }}>
                     <Skeleton height="200px" />

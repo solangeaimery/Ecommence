@@ -11,6 +11,8 @@ import { UserContext } from './contexts/UserContext'
 import { ProductDetail } from './pages/products/ProductDetail'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { FormsLayout } from './Layouts/FormsLayout'
+import { Image, Flex, Heading } from '@chakra-ui/react'
+import { ImpulseSpinner, StageSpinner } from 'react-spinners-kit'
 
 
 function App() {
@@ -18,7 +20,11 @@ function App() {
   const { isLoading } = useContext(UserContext)
 
   if (isLoading) {
-    return (<p> toy cargando </p>)
+    return (
+      <Flex flexDir="column" minW="100vw" minH="100vh" justifyContent="center" alignItems="center" >
+        <Image src='public/maceta.png' alt='monstera' boxSize="200px" />
+        <StageSpinner size={80} color="#6A4873" loading={true} />
+      </Flex>)
   }
   return (
     <Routes>

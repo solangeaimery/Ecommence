@@ -52,8 +52,8 @@ export const Products = () => {
                     <SkeletonCard size="25%"/>
                 </SimpleGrid>
             )}
-            <Flex wrap="wrap" p="50px" gap="20px" backgroundImage="url('public/backgroundLeaves.jpeg')">
-                {data.map(product => <ProductCard key={product.id} size="23%" product={product} />)}
+            <Flex wrap="wrap" p="50px" gap="20px" backgroundImage="url('public/backgroundLeaves.jpeg')" justifyContent="center">
+                {data.map(product => <ProductCard key={product.id} product={product} />)}
             </Flex>
         </Grid>
     )
