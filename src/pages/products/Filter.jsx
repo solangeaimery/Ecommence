@@ -24,8 +24,8 @@ export const Filter = ({ dataBase, handleData }) => {
     }
 
     return (
-        <Flex marginTop="70px"
-            gap={{ base: '5', md: '10' }}
+        <Flex marginTop={{sm:"0px", md:"90px" , lg:"90px"}}
+            gap={{ base: '5', sm: '10' }}
             alignItems="center"
             justifyContent="center"
             p="10px"

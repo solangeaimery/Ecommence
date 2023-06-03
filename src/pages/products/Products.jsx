@@ -29,7 +29,7 @@ export const Products = () => {
     }, []);
 
     return (
-        <Grid marginTop="25px">
+        <Grid backgroundColor="#D7E3DB">
             <Filter data={data} handleData={handleData} dataBase={dataBase} />
             {isLoading && (
                 <SimpleGrid
@@ -40,16 +40,16 @@ export const Products = () => {
                     bgColor="white"
                     p="50px" gap="20px"
                     backgroundImage="url('public/backgroundLeaves.jpeg')"
-                    >
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
-                    <SkeletonCard size="25%"/>
+                >
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
+                    <SkeletonCard size="25%" />
                 </SimpleGrid>
             )}
             <Flex wrap="wrap" p="50px" gap="20px" backgroundImage="url('public/backgroundLeaves.jpeg')" justifyContent="center">
