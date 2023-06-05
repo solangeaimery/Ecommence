@@ -1,12 +1,13 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
-import { FaLock, FaRegCreditCard } from 'react-icons/fa'
+import { Box, Flex, IconButton, Text } from '@chakra-ui/react'
+import { FaFacebook, FaInstagram, FaLock, FaRegCreditCard } from 'react-icons/fa'
 import { useMediaQuery } from 'react-responsive'
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 export const Footer = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 })
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" minH="fit-content">
       {isMobile ? (
         <Flex
           backgroundColor="#D8E4DC"
@@ -59,7 +60,7 @@ export const Footer = () => {
         </Flex>
       )}
       <Flex
-        h={100}
+        h="fit-content"
         w="100%"
         bg="#16302B"
         alignItems="center"
@@ -68,6 +69,32 @@ export const Footer = () => {
         flexDir="column"
         gap="10px"
       >
+        <Flex paddingTop="10px">
+        <IconButton
+                as={Link} to="https://www.facebook.com/"
+                color="#C0E6C8"
+                background="transparent"
+                borderRadius="30px"
+                _hover={{
+                  color: '#6A4873',
+                  background: '#C0E6C8',
+                }}
+              >
+                <FaFacebook fontSize="20px" />
+              </IconButton>
+              <IconButton
+                as={Link} to="https://www.instagram.com/"
+                color="#C0E6C8"
+                background="transparent"
+                borderRadius="30px"
+                _hover={{
+                  color: '#6A4873',
+                  background: '#C0E6C8',
+                }}
+              >
+                <FaInstagram fontSize="20px" />
+              </IconButton>
+        </Flex>
         <Flex alignItems="center" gap="5px">
           <Text>Hecho con 🤍 by</Text>
           <Text className="firma" fontSize="25px">

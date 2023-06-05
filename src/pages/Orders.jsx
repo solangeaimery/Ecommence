@@ -50,7 +50,7 @@ export const Orders = () => {
       emptyCart()
       setTimeout(() => {
         navigate(-1)
-      }, 5000)
+      }, 7000)
     } catch (error) {
       alert('uop hubo un error')
     }
