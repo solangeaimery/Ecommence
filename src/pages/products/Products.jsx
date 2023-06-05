@@ -57,7 +57,7 @@ export const Products = () => {
         wrap="wrap"
         p="50px"
         gap="20px"
-        backgroundImage="url('public/backgroundLeaves.jpeg')"
+        backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/backgorundleaves.jpeg?alt=media&token=0b93704d-1cfd-4d7c-a200-8e713acf28ec&_gl=1*14ldtno*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI2NjIuMC4wLjA.')"
         justifyContent="center"
       >
         {data.map((product) => (
