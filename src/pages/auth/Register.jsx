@@ -11,11 +11,12 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase/config'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { UserContext } from '../../contexts/UserContext'
 
 export const Register = () => {
   const {
@@ -25,6 +26,7 @@ export const Register = () => {
   } = useForm()
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
+  const {handleUser} = useContext(UserContext)
   const navigate = useNavigate()
   const createNewAccount = async (data) => {
     try {
@@ -33,7 +35,8 @@ export const Register = () => {
         data.email,
         data.password
       )
-      const user = userCredential.user //aqui iria el seter del context
+      const user = userCredential.user
+      handleUser(user)
       navigate('/')
     } catch (error) {
       const errorCode = error.code

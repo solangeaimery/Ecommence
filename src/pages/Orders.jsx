@@ -17,7 +17,7 @@ import {
   Image,
   ModalFooter,
 } from '@chakra-ui/react'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { UserContext } from '../contexts/UserContext'
 import { createOrder } from '../services/products'

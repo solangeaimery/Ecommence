@@ -10,7 +10,7 @@ import {
     Flex,
     Toast,
 } from '@chakra-ui/react'
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { getOneProduct } from '../../services/products'

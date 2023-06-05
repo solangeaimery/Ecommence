@@ -1,5 +1,5 @@
-import { Button, Flex, Input, Select, Box } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Button, Flex, Input, Select } from '@chakra-ui/react'
+import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 
 export const Filter = ({ dataBase, handleData }) => {

@@ -8,7 +8,7 @@ import {
     Image,
     Flex,
 } from '@chakra-ui/react'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'
 import { FaTrash } from 'react-icons/fa'
 

@@ -22,7 +22,7 @@ import {
 import { Link, NavLink } from 'react-router-dom'
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa'
 import { MdMenu } from 'react-icons/md'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import { CartContext } from '../contexts/CartContext'
 import CartCard from './CartCard'

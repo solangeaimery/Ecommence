@@ -1,5 +1,5 @@
 import { Flex, Grid, SimpleGrid } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductCard from '../../components/ProductCard'
 import { getAllProducts } from '../../services/products'
 import { Filter } from './Filter'

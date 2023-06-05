@@ -10,9 +10,8 @@ import {
   InputGroup,
   SimpleGrid,
   Text,
-  Box,
 } from '@chakra-ui/react'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase/config'

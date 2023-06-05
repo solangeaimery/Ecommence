@@ -1,17 +1,13 @@
 import {
-    Box,
     Button,
     Flex,
-    Heading,
-    Image,
     SimpleGrid,
-    Wrap,
+    Image
 } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductCard from '../../components/ProductCard'
 import { SkeletonCard } from '../../components/SkeletonCard'
 import { getAllProducts } from '../../services/products'
-import styles from '../home/HomePage.module.css'
 import { Link } from 'react-router-dom'
 import { FaSun } from 'react-icons/fa'
 
