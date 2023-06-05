@@ -6,9 +6,7 @@ import {
     Text,
     CardFooter,
     Image,
-    Box,
     Flex,
-    SimpleGrid,
 } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'

@@ -1,10 +1,8 @@
 import {
   Box,
   Button,
-  ButtonGroup,
   Card,
   CardBody,
-  CardFooter,
   Divider,
   Flex,
   Heading,
@@ -13,10 +11,9 @@ import {
   Text,
   useToast,
 } from '@chakra-ui/react'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'
 import { Link } from 'react-router-dom'
-import { FaShoppingCart } from 'react-icons/fa'
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext)

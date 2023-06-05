@@ -1,6 +1,5 @@
 import {
   HStack,
-  Input,
   Heading,
   SimpleGrid,
   IconButton,
@@ -9,7 +8,6 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  DrawerFooter,
   Button,
   useDisclosure,
   DrawerContent,

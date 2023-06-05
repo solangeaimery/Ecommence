@@ -1,10 +1,6 @@
-import { createContext, useState } from 'react'
-
-import React from 'react'
+import { createContext, useContext, useState } from 'react'
 
 export const CartContext = createContext()
-
-const array = [{ value: 5 }, { value: 10 }, { value: 3 }]
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])

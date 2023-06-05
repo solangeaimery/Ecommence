@@ -1,4 +1,4 @@
-import { Flex, Stack } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { NavApp } from '../components/NavApp'
 import { Footer } from '../components/Footer'
 import { Outlet } from 'react-router-dom'

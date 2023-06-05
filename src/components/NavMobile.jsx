@@ -1,14 +1,12 @@
 import {
 	HStack,
 	Heading,
-	SimpleGrid,
 	IconButton,
 	Drawer,
 	DrawerOverlay,
 	DrawerCloseButton,
 	DrawerHeader,
 	DrawerBody,
-	DrawerFooter,
 	Button,
 	useDisclosure,
 	DrawerContent,
@@ -19,13 +17,12 @@ import {
 	Image,
 	Box,
 	Flex,
-	Text,
 	Badge,
 } from '@chakra-ui/react'
 import { Link, NavLink } from 'react-router-dom'
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa'
 import { MdMenu } from 'react-icons/md'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import { CartContext } from '../contexts/CartContext'
 import CartCard from './CartCard'
