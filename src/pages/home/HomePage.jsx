@@ -30,9 +30,9 @@ export const HomePage = () => {
 
     return (
         <Flex flexDirection="column" marginTop={{ base: '0px', sm: '50px' }}>
-            <Image objectFit="cover" src="../public/home.jpeg" alt="plants" />
+            <Image objectFit="cover" src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/home.jpeg?alt=media&token=687dae36-66fd-4f1b-b3ff-d20c06ce211c&_gl=1*36imiu*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI1NzMuMC4wLjA." alt="plants" />
             <Flex
-                backgroundImage="url('public/backgorundleaves.jpeg')"
+                backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/backgorundleaves.jpeg?alt=media&token=0b93704d-1cfd-4d7c-a200-8e713acf28ec&_gl=1*14ldtno*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI2NjIuMC4wLjA.')"
                 p="20px"
                 color="#6A4873"
                 justifyContent="center"

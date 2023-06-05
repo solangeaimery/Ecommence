@@ -73,7 +73,7 @@ export const NavApp = () => {
         <SimpleGrid columns={3}>
           <Flex>
             <Image
-              src="public/hojaizquierda.png"
+              src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/hojaizquierda.png?alt=media&token=115fe96f-4e81-4577-9fed-a1631ef936dd&_gl=1*m03lqn*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI2NDMuMC4wLjA."
               alt="flores"
               boxSize="110px"
               marginBottom="-20px"
@@ -81,7 +81,7 @@ export const NavApp = () => {
           </Flex>
           <Flex justifyContent="center" alignItems="center">
             <Image
-              src="public/LogoFake.png"
+              src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/LogoFake.png?alt=media&token=fc9a3c7a-e7bf-4f52-9ca3-fe2fde84c844&_gl=1*1tgb1or*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI1NTUuMC4wLjA."
               alt="logo"
               boxSize="full"
               objectFit="cover"
@@ -237,7 +237,7 @@ export const NavApp = () => {
             <Flex justifyContent="space-between" alignItems="flex-end">
               <Box>
                 <Image
-                  src="public/maceta.png"
+                  src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/maceta.png?alt=media&token=4bcc69c4-80ee-491d-b78f-2af5b3fc7702&_gl=1*1ksty2m*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI1ODkuMC4wLjA."
                   alt="maceta"
                   boxSize="100px"
                 ></Image>

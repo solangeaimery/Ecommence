@@ -104,7 +104,7 @@ export const NavMobile = () => {
 					</Menu>
 					<Flex justifyContent="center" alignItems="center">
 						<Image
-							src="public/LogoFake.png"
+							src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/LogoFake.png?alt=media&token=fc9a3c7a-e7bf-4f52-9ca3-fe2fde84c844&_gl=1*cspdc4*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDQxNjEuMC4wLjA."
 							alt="logo"
 							boxSize="full"
 							objectFit="cover"

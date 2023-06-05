@@ -58,7 +58,7 @@ export const Orders = () => {
 
   return (
     <Flex
-      backgroundImage="url('public/backgroundLeaves.jpeg')"
+      backgroundImage="url('https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/backgorundleaves.jpeg?alt=media&token=0b93704d-1cfd-4d7c-a200-8e713acf28ec&_gl=1*14ldtno*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI2NjIuMC4wLjA.')"
       padding="20px"
       minHeight="100vh"
       justifyContent="center"
@@ -150,7 +150,7 @@ export const Orders = () => {
           </ModalBody>
           <ModalFooter display="flex" justifyContent="flex-end">
             <Image
-              src="public/monsteraizquierdas.png"
+              src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/monsteraizquierdas.png?alt=media&token=d5067512-c224-48e3-96d0-c7a6c2003b02&_gl=1*hn6r3p*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDI2MjUuMC4wLjA."
               alt="Dan Abramov"
               boxSize="100px"
               marginRight="-50px"
