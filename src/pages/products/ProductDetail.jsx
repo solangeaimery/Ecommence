@@ -1,25 +1,22 @@
 import { Button, Card, CardBody, CardFooter, Image, Heading, Stack, Text, Box, Flex, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Toast, useToast } from '@chakra-ui/react'
-import React, { useContext, useEffect, useMemo } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { useProductsContext } from '../../contexts/ProductsContext';
 import { useState } from 'react';
 import { getOneProduct } from '../../services/products';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { FaCcVisa, FaPiggyBank, FaRegCreditCard, FaShippingFast } from 'react-icons/fa';
 import { CartContext } from '../../contexts/CartContext';
+import { useMediaQuery } from 'react-responsive';
+import { StageSpinner } from 'react-spinners-kit'
 
 export const ProductDetail = () => {
 
     const { productId } = useParams();
-    const { allProducts } = useProductsContext()
     const [product, setProduct] = useState()
     const [isloading, setIsLoading] = useState(true)
-    const {addToCart} = useContext(CartContext)
-    const toast = useToast()
+    const { addToCart } = useContext(CartContext)
+    const isMobile = useMediaQuery({ maxWidth: 767 });
 
     console.log(getOneProduct(productId))
-    console.log(allProducts)
 
     useEffect(() => {
         getOneProduct(productId)
@@ -34,47 +31,48 @@ export const ProductDetail = () => {
 
     if (isloading) {
         return (
-            <Box marginTop="100px">
-                <Heading>toy cargando</Heading>
-            </Box>
+            <Flex flexDir="column" minW="100vw" minH="100vh" justifyContent="center" alignItems="center" >
+                <Image src='public/maceta.png' alt='monstera' boxSize="200px" />
+                <StageSpinner size={80} color="#6A4873" loading={true} />
+            </Flex>
         )
     }
 
     return (
-        <Flex padding="50px" flexDirection="column">
+        <Flex padding={{ base: '10px', sm: '50px' }} flexDirection="column">
             <Card
                 direction={{ base: 'column', sm: 'row' }}
                 variant='outline'
                 minH="100%"
-                padding="50px"
+                minW="80vw"
+                padding={{ base: '20px', sm: '50px' }}
                 overflow="hidden"
             >
-                <Flex flexDirection="column" gap="10px">
+                {!isMobile && <Flex flexDirection="column" gap="10px">
                     <Image
                         objectFit='cover'
                         maxW={{ base: '100%' }}
-                        src={product.image}
+                        src={product.image[1]}
                         alt={product.name}
-                        minH="35vh"
-                        minW="15vw"
+                        minH="25vh"
+                        minW="10vw"
                     />
                     <Image
                         objectFit='cover'
                         maxW={{ base: '100%' }}
-                        src={product.image}
+                        src={product.image[2]}
                         alt={product.name}
                         minH="35vh"
                         minW="15vw"
                     />
-                </Flex>
-                {/* aqui quiero hacer un carrousel de fotos pero lo vamos a dejar para despues gg  */}
+                </Flex>}
                 <Image
                     objectFit='cover'
                     maxW={{ base: '100%' }}
-                    src={product.image}
+                    src={product.image[0]}
                     alt={product.name}
-                    maxH="80vh"
-                    p="20px"
+                    maxH="90vh"
+                    p="10px"
                 />
                 <Stack>
                     <CardBody>
@@ -122,12 +120,6 @@ export const ProductDetail = () => {
                             Agregar al carrito
                         </Button>
                     </CardBody>
-
-                    {/* <CardFooter>
-                        <Button variant='solid' colorScheme='blue'>
-                            Agregar al carrito
-                        </Button>
-                    </CardFooter> */}
                 </Stack>
             </Card>
             <Box margin="20px">

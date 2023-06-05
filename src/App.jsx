@@ -11,8 +11,8 @@ import { UserContext } from './contexts/UserContext'
 import { ProductDetail } from './pages/products/ProductDetail'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import { FormsLayout } from './Layouts/FormsLayout'
-import { Image, Flex, Heading } from '@chakra-ui/react'
-import { ImpulseSpinner, StageSpinner } from 'react-spinners-kit'
+import { Image, Flex} from '@chakra-ui/react'
+import { StageSpinner } from 'react-spinners-kit'
 
 
 function App() {

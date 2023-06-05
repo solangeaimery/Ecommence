@@ -27,7 +27,7 @@ export const HomePage = () => {
 
 
     return (
-        <Flex flexDirection="column" marginTop="60px">
+        <Flex flexDirection="column" marginTop={{ base: '0px', sm: '50px' }}>
             <Image
                 objectFit='cover'
                 src='../public/home.jpeg'
@@ -75,7 +75,7 @@ export const HomePage = () => {
                 _hover={{
                     color: "WHITE",
                     backgroundColor: "#6A4873"
-                }} >ver todos los productos</Button> 
+                }} >Ver todo</Button> 
                 {/* aca me gustaria saber pq no me lleva a la parte superior de la pantalla */}
             </Flex>
         </Flex>

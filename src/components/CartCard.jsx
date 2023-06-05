@@ -8,7 +8,7 @@ const CartCard = ({ item }) => {
     const { deleteItem } = useContext(CartContext)
     return (
         <Card
-            direction={{ base: 'column', sm: 'row' }}
+            direction="rpw"
             overflow='hidden'
             variant='outline'
             m="10px"

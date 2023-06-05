@@ -118,13 +118,13 @@ export const NavMobile = () => {
 						{cart.map(item => <CartCard item={item} key={item.id} />)}
 					</DrawerBody>
 
-					<Flex flexDir="column" justifyContent="flex-end" gap={5}>
-						{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='md' marginBottom="-40px" marginRight="20px">Total  ${totalCart()}</Heading>}
+					<Flex flexDir="column" justifyContent="flex-end" gap={5} padding="5px">
+						{totalCart() !== 0 && <Heading textAlign="end" as='h4' size='sm' marginBottom="-40px" marginRight="20px">Total  ${totalCart()}</Heading>}
 						<Flex justifyContent="space-between" alignItems="flex-end">
 							<Box>
 								<Image src='public/maceta.png' alt='maceta' boxSize="100px"></Image>
 							</Box>
-							<Box margin="20px">
+							<Flex gap="5px" padding="5px" flexDirection="column" marginTop="20px">
 								<Button variant='outline' color="#6A4873" borderColor="#8B728F" borderWidth="1px" mr={3} onClick={emptyCart}>
 									vaciar carrito
 								</Button>
@@ -138,7 +138,7 @@ export const NavMobile = () => {
 									isDisabled={cart.length === 0}
 								>Finalizar compra
 								</Button>
-							</Box>
+							</Flex>
 						</Flex>
 					</Flex>
 				</DrawerContent>
