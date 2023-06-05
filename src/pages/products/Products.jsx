@@ -6,56 +6,64 @@ import { Filter } from './Filter'
 import { SkeletonCard } from '../../components/SkeletonCard'
 
 export const Products = () => {
-    const [data, setData] = useState([])
-    const [dataBase, setDataBase] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+  const [data, setData] = useState([])
+  const [dataBase, setDataBase] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
-    const handleData = (newData) => {
-        setData(newData)
+  const handleData = (newData) => {
+    setData(newData)
+  }
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const dataArray = await getAllProducts()
+        setData(dataArray)
+        setDataBase(dataArray)
+        setIsLoading(false)
+      } catch (error) {
+        console.error('Error al obtener los datos:', error)
+      }
     }
+    getProducts()
+  }, [])
 
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const dataArray = await getAllProducts();
-                setData(dataArray);
-                setDataBase(dataArray)
-                setIsLoading(false)
-            } catch (error) {
-                console.error('Error al obtener los datos:', error);
-            }
-        };
-        getProducts();
-    }, []);
-
-    return (
-        <Grid backgroundColor="#D7E3DB">
-            <Filter data={data} handleData={handleData} dataBase={dataBase} />
-            {isLoading && (
-                <SimpleGrid
-                    h="100%"
-                    w="100%"
-                    columns={{ base: '1', md: '3', xl: '4' }}
-                    justifyContent="center"
-                    bgColor="white"
-                    p="50px" gap="20px"
-                    backgroundImage="url('public/backgroundLeaves.jpeg')"
-                >
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                    <SkeletonCard size="25%" />
-                </SimpleGrid>
-            )}
-            <Flex wrap="wrap" p="50px" gap="20px" backgroundImage="url('public/backgroundLeaves.jpeg')" justifyContent="center">
-                {data.map(product => <ProductCard key={product.id} product={product} />)}
-            </Flex>
-        </Grid>
-    )
+  return (
+    <Grid backgroundColor="#D7E3DB">
+      <Filter data={data} handleData={handleData} dataBase={dataBase} />
+      {isLoading && (
+        <SimpleGrid
+          h="100%"
+          w="100%"
+          columns={{ base: '1', md: '3', xl: '4' }}
+          justifyContent="center"
+          bgColor="white"
+          p="50px"
+          gap="20px"
+          backgroundImage="url('public/backgroundLeaves.jpeg')"
+        >
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </SimpleGrid>
+      )}
+      <Flex
+        wrap="wrap"
+        p="50px"
+        gap="20px"
+        backgroundImage="url('public/backgroundLeaves.jpeg')"
+        justifyContent="center"
+      >
+        {data.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Flex>
+    </Grid>
+  )
 }
-

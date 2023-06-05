@@ -9,9 +9,9 @@ import {
     Flex,
 } from '@chakra-ui/react'
 
-export const SkeletonCard = (size) => {
+export const SkeletonCard = () => {
     return (
-        <Card maxW='20vw' gap="25px" minW="250px" p="10px" boxShadow='xl'>
+        <Card maxW="20vw" gap="25px" minW="250px" p="10px" boxShadow="xl">
             <CardBody>
                 <Box maxW={{ base: '100%', md: '92.5%' }}>
                     <Skeleton height="200px" />
@@ -20,13 +20,13 @@ export const SkeletonCard = (size) => {
                     <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
                 </Stack>
             </CardBody>
-            <Divider/>
+            <Divider />
             <Flex>
-                <Box maxW={{ base: '20%',}}>
+                <Box maxW={{ base: '20%' }}>
                     <Skeleton height="50px" />
                 </Box>
-                <Box maxW={{ base: '20%', }}>
-                    <Skeleton height="50px"/>
+                <Box maxW={{ base: '20%' }}>
+                    <Skeleton height="50px" />
                 </Box>
             </Flex>
         </Card>
