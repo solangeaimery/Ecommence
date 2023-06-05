@@ -186,7 +186,7 @@ export const NavMobile = () => {
 						<Flex justifyContent="space-between" alignItems="flex-end">
 							<Box>
 								<Image
-									src="public/maceta.png"
+									src="https://firebasestorage.googleapis.com/v0/b/ecommence-df92c.appspot.com/o/maceta.png?alt=media&token=4bcc69c4-80ee-491d-b78f-2af5b3fc7702&_gl=1*1opeu0h*_ga*MTUxOTg4MDU4Ny4xNjgzOTMyMjQ0*_ga_CW55HF8NVT*MTY4NjAwMjQ2MC4xNS4xLjE2ODYwMDQyMjUuMC4wLjA."
 									alt="maceta"
 									boxSize="100px"
 								></Image>
